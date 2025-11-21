@@ -20,17 +20,37 @@
             <nav class="hidden" id="menu">
                 <ul>
                     <li>
+                        <a href="#repo-block">Repositories</a>
+                        <ul>
+                            <li><a href="#create-repo">Créer</a></li>
+                            <li><a href="#init-repo">Init</a></li>
+                            <li><a href="#add-file-to-repo">Commit</a></li>
+                            <li><a href="#create-main-branch">Main branch</a></li>
+                            <li><a href="#remote-add-origin">Origin</a></li>
+                            <li><a href="#push-to-repo">Push</a></li>
+                            <li><a href="#summarize-repo">Résumé</a></li>
+                            <li><a href="#clone-repo">Cloner</a></li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#push-block">Envoyer</a>
                         <ul>
                             <li><a href="#add">Add</a></li>
                             <li><a href="#commit">Commit</a></li>
                             <li><a href="#push">Push</a></li>
+                            <li><a href="#summarize-push">Résumé</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pull-block">Envoyer</a>
+                        <ul>
+                            <li><a href="#pull">Pull</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#branch-block">Branches</a>
                         <ul>
-                            <li><a href="#list-branch">Lister</a></li>
+                            <li><a href="#list-branch">creer</a></li>
                             <li><a href="#add-branch">Créer</a></li>
                             <li><a href="#change-branch">Changer</a></li>
                             <li><a href="#rename-branch">Renommer</a></li>
@@ -38,10 +58,87 @@
                             <li><a href="#merge-branch">Joindre</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#example-block">Exemple</a>
+                    </li>
                 </ul>
             </nav>
         </section>
         <section class="main-box">
+            <article id="repo-block">
+                <h2>Les repositories</h2>
+                <p class="description">
+                    Un <span>respository</span> (ou répertoire) est grossièrement un dossier de code en ligne. L'interêt est qu'une équipe de développeur puissent avoir accès au code source d'un projet et participer à l'élaboration de ce projet en y injectant leurs modifications, chacun travaillant depuis leur propre ordinateur sur une version locale du repository.
+                </p>
+                <hr>
+                <div class="command-box" id="create-repo">
+                    <h3>Créer un nouveau repository</h3>
+                    <p>Pour partir de rien, nous devons dans une premier temps créer un repository grâce à un outils de versionning en ligne, par exemple <span>GitHub</span>. Une fois ce dernier créé, nous pouvons créer une dossier dans les fichiers de notre ordinateur et définir ce dossier comme l'une des sources du repository.</p>
+                </div>
+                <div class="command-box" id="init-repo">
+                    <h3>Initialiser le repository</h3>
+                    <p>Une fois notre respository et dossier local créé, nous devons initialiser, c'est à dire définir notre dossier comme l'une des sources de ce repository.</p>
+                    <div class="code">
+                        <p>git init</p>
+                    </div>
+                </div>
+                <div class="command-box" id="add-file-to-repo">
+                    <h3>Créer une premier fichier et commit</h3>
+                    <p>Ce fichier - par exemple un fichier texte vierge - va permettre de réaliser une première participation au reposiroty. Nous pouvons ensuite l'ajouter dans un commit, qui sera donc le premier du repository</p>
+                    <div class="code">
+                        <p>git add monFichier.txt</p>
+                        <p>git commit -m "Premier commit"</p>
+                    </div>
+                    <p>Plus de détails sur les commits dans la section <a href="push-block">Envoyer du code sur un repository</a></p>
+                </div>
+                <div class="command-box" id="create-main-branch">
+                    <h3>Créer la branche principale</h3>
+                    <p>Lorsqu'on envoi du code sur un repository, on l'envoi sur une branche. Cette étape va permettre de créer la branche principale du repository, qui va généralement être nommé <span>main</span> ou <span>master</span></p>
+                    <div class="code">
+                        <p>git branch -M main</p>
+                    </div>
+                    <p>Dans ce cas, <span>-M</span> signifie <span>--move --force</span>. C'est utilisé afin de nous assurer que la branche principale est nommé comme nous le voulons, ici <span>main</span></p>
+                    <p>Plus de détails sur les branches dans la section <a href="#branch-block">Utiliser des branches</a></p>
+                </div>
+                <div class="command-box" id="remote-add-origin">
+                    <h3>Ajouter le lien du repository en ligne</h3>
+                    <p>Maintenant que tout est prêt du coté de notre ordinateur, nous pouvons lier notre dossier au repository local. Pour cela, nous utilisons la commande suivante :</p>
+                    <div class="code">
+                        <p>git remote add origin [lienDeNotreRepo]</p>
+                    </div>
+                    <p><span>remote</span> spécifie que notre repository est accessible sur un serveur en ligne. <span>add origin</span> permet d'ajouter la source de ce repository, ici sous forme de lien. Le lien de notre repository est généralement accessible sur notre outils de versionning.</p>
+                </div>
+                <div class="command-box" id="push-to-repo">
+                    <h3>Ajouter le lien du repository en ligne</h3>
+                    <p>Dernière étape : Envoyer notre code sur le repository. Pour cela, on utilise la commande suivante :</p>
+                    <div class="code">
+                        <p>git push -u origin main</p>
+                    </div>
+                    <p>Dans ce cas, <span>-u</span> est le diminutif pour <span>--set-upstream</span>, qui sert à ajouter un tracking sur toutes les branches crées jusqu'à maintenant, ici la branche <span>main</span>. <span>origin main</span> permet de trouver une référence à une possible branche <span>main</span> dans le repository et de la mettre à jour, ou la créer le cas échéant</p>
+                    <p>Plus de détails sur les push dans la section <a href="#push-block">Envoyer du code sur un reposiroty</a></p>
+                </div>
+                <div class="command-box" id="summarize-repo">
+                    <h3>Résumé</h3>
+                    <div class="code">
+                        <p>echo "# Mon Repo" >> README.md</p>
+                        <p>git init</p>
+                        <p>git add README.md</p>
+                        <p>git commit -m "Premier commit"</p>
+                        <p>git branch -M main</p>
+                        <p>git remote add origin [lienDeMonRepo]</p>
+                        <p>git push -u origin main</p>
+                    </div>
+                    <p>La première commande, <span>echo "# Mon Repo" >> README.md</span>, permet d'écrire dans la phrase entre guillemet dans un fichier, ici <span>README.md</span>. Ce fichier est créé s'il n'existe pas, ou modifié s'il existe.</p>
+                </div>
+                <div class="command-box" id="clone-repo">
+                    <h3>Cloner un repository existant</h3>
+                    <p>Il est également possible de partir d'un repository existant. Pour travailler sur un tel repository, il faut d'abord le cloner afin de l'avoir à disposition localement, sur notre ordinateur. Pour cela, on utilise la commande suivante :</p>
+                    <div class="code">
+                        <p>git clone [lienDuRepo]</p>
+                    </div>
+                </div>
+            </article>
+
             <article id="push-block">
                 <h2>Envoyer du code sur un repository</h2>
                 <p class="description">
@@ -59,7 +156,7 @@
                         <p>git add monFichier.txt</p>
                     </div>
                 </div>
-                <div class="command-box" id="push">
+                <div class="command-box" id="commit">
                     <h3>Préparer un commit</h3>
                     <p>Un commit est similaire à un paquet que l'on prépare afin de l'envoyer dans le repository. Avant d'envoyer du code dans le repository, il faut préparer un commit. La commande suivante va préparer un commit avec tout ce qui a été ajouté plus tôt grâce à la commande précédente.</p>
                     <div class="code">
@@ -67,13 +164,36 @@
                     </div>
                     <p><span>-m</span> permet d'ajouter une message descriptif au commit.</p>
                 </div>
-                <div class="command-box">
+                <div class="command-box" id="push">
                     <h3>Push les changements</h3>
                     <p>Maintenant que les changements ont été ajouté et préparer en commit, on peut envoyer tous les commit sur le repository grâce à la commande suivante :</p>
                     <div class="code">
                         <p>git push</p>
                     </div>
                     <p>NB : On peut push plusieurs commit d'un coup grâce à cette commande</p>
+                </div>
+                <div class="command-box" id="summarize-push">
+                    <h3>Résumé</h3>
+                    <div class="code">
+                        <p>git add .</p>
+                        <p>git commit -m "message"</p>
+                        <p>git push</p>
+                    </div>
+                </div>
+            </article>
+
+            <article id="pull-block">
+                <h2>Récupérer du code depuis un repository</h2>
+                <p class="description">
+                    En tant que développeur, avant de me mettre à travailler localement sur mon ordinateur, je veux m'assurer d'avoir à ma disposition la dernière version en date du code disponible sur le repository.
+                </p>
+                <hr>
+                <div class="command-box" id="pull">
+                    <h3>Pull le code du repository</h3>
+                    <p>Pour récupérer le code disponible sur un repository, on utilise la comande suivante :</p>
+                    <div class="code">
+                        <p>git pull</p>
+                    </div>
                 </div>
             </article>
 
@@ -132,6 +252,42 @@
                         <p>git merge [maBranche]</p>
                     </div>
                     <p>Parfois, il faudra résoudre certains conflits, appellés <span>merge conflicts</span>. Cela arrive lorsque le serveur ne parvient pas à déterminer quelles lignes de codes sont à remplacer ou garder.</p>
+                </div>
+            </article>
+
+            <article id="example-block">
+                <h2>Example d'utilisation</h2>
+                <p class="description">Voici un exemple complet d'utilisation des commandes git, de la création d'un repository au merge d'une branche.</p>
+                <hr>
+                <div class="command-box">
+                    <h3>Exemple</h3>
+                    <p>Je commence par créer mon repository en ligne et executer la suite de commande pour préparer mon environnement local, et lier mon dossier avec mon repository en ligne.</p>
+                    <div class="code">
+                        <p>echo "# Mon Repo" >> README.md</p>
+                        <p>git init</p>
+                        <p>git add README.md</p>
+                        <p>git commit -m "Premier commit"</p>
+                        <p>git branch -M main</p>
+                        <p>git remote add origin [lienDeMonRepo]</p>
+                        <p>git push -u origin main</p>
+                    </div>
+                    <p>Ensuite, je crée une branche afin de coder une fonctionnalité de manière sécuritaire, sans impacter ma branche principale.</p>
+                    <div class="code">
+                        <p>git branch first-feature</p>
+                        <p>git checkout first-feature</p>
+                    </div>
+                    <p>Une fois ma fonctionnalité codée et mon code vérifié, je peux envoyer mon code sur mon repository - et toujours sur ma branche <span>first-feature</span> - avant de merge ma branche sur la branche principale</p>
+                    <div class="code">
+                        <p>git add .</p>
+                        <p>git commit -m "First Feature OK"</p>
+                        <p>git push</p>
+                        <p>git checkout main</p>
+                        <p>git pull</p>
+                        <p>git merge first-feature</p>
+                    </div>
+                    <p>NB : Ici, la commande <span>git pull</span> utilisée après être retourné sur la branch <span>main</span> est une sécurité, au cas oú un autre développeur aurait merge sa propre branche entre temps.</p>
+                    <br>
+                    <p>Je peux maintenant aller dormir tranquillement, mon code est sur la branche principale, disponible pour les autres développeurs qui veulent participer au projet :)</p>
                 </div>
             </article>
         </section>
