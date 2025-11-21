@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Cheat Sheet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Git Cheat Sheet</h1>
+    </header>
+    <main>
+        <section class="side-menu">
+            <nav>
+                <ul>
+                    <li><a href="#push-block">Envoyer</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="main-box">
+            <article id="push-block">
+                <h2>Envoyer du code sur un repository</h2>
+                <hr>
+                <div class="command-box">
+                    <h3>Ajouter un changement</h3>
+                    <p>Afin d'envoyer les modifications apportées au code, il faut ajouter ces changements. Cette action est comparable à une sauvegarde dans un fichier Word par exemple.</p>
+                    <div class="code">
+                        <p>git add .</p>
+                    </div>
+                    <p>Le <span>.</span> permet d'ajouter automatiquement tous fichiers contenant au moins une modification. On peut aussi ajouter un fichier en particulier comme suit :</p>
+                    <div class="code">
+                        <p>git add monFichier.txt</p>
+                    </div>
+                </div>
+                <div class="command-box">
+                    <h3>Push les changementsAfter DSU</h3>
+                    <p>Un commit est similaire à un paquet que l'on prépare afin de l'envoyer dans le repository. Avant d'envoyer du code dans le repository, il faut préparer un commit. La commande suivante va préparer un commit avec tout ce qui a été ajouté plus tôt grâce à la commande précédente.</p>
+                    <div class="code">
+                        <p>git commit -m "message"</p>
+                    </div>
+                    <p><span>-m</span> permet d'ajouter une message descriptif au commit.</p>
+                </div>
+                <div class="command-box">
+                    <h3>Push les changements</h3>
+                    <p>Maintenant que les changements ont été ajouté et préparer en commit, on peut envoyer tous les commit sur le repository grâce à la commande suivante :</p>
+                    <div class="code">
+                        <p>git push</p>
+                    </div>
+                    <p>NB : On peut push plusieurs commit d'un coup grâce à cette commande</p>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
