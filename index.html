@@ -27,12 +27,26 @@
                             <li><a href="#push">Push</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#branch-block">Branches</a>
+                        <ul>
+                            <li><a href="#list-branch">Lister</a></li>
+                            <li><a href="#add-branch">Créer</a></li>
+                            <li><a href="#change-branch">Changer</a></li>
+                            <li><a href="#rename-branch">Renommer</a></li>
+                            <li><a href="#delete-branch">Supprimer</a></li>
+                            <li><a href="#merge-branch">Joindre</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </section>
         <section class="main-box">
             <article id="push-block">
                 <h2>Envoyer du code sur un repository</h2>
+                <p class="description">
+                    En tant que développeur, si je veux modifier le code d'un repository depuis mon ordinateur, j'ai besoin de connaître quelques commandes afin de partager mon travail.
+                </p>
                 <hr>
                 <div class="command-box" id="add">
                     <h3>Ajouter un changement</h3>
@@ -60,6 +74,64 @@
                         <p>git push</p>
                     </div>
                     <p>NB : On peut push plusieurs commit d'un coup grâce à cette commande</p>
+                </div>
+            </article>
+
+            <article id="branch-block">
+                <h2>Utiliser des branches</h2>
+                <p class="description">Une branche est comparable à une copie du code sur laquelle nous pouvons travailler. Il est courant d'utiliser les branches afin de pouvoir effectuer des modifications sans impacter le code principal (la branche <span>main</span> ou <span>master</span> en général. Une fois notre version du code vérifié, nous pouvons ensuite <span>merge</span> notre branche sur la branche principale, afin que tous ai accès à la version à jour.</p>
+                <hr>
+                <div class="command-box" id="list-branch">
+                    <h3>Lister les branches</h3>
+                    <p>Pour afficher toutes les branches du repository, on utilise la commande suivante :</p>
+                    <div class="code" id="commit">
+                        <p>git branch</p>
+                    </div>
+                    <p>Une emphase sera faite sur la branche sur laquelle on se trouve au moment de l'execution de la commande</p>
+                </div>
+                <div class="command-box" id="add-branch">
+                    <h3>Créer une branche</h3>
+                    <p>Pour ajouter une branche au repository, on utilise la commande suivate :</p>
+                    <div class="code">
+                        <p>git branch [maBranche]</p>
+                    </div>
+                    <p>NB : Créer une branche de cette manière ne nous fera pas changer de branche, nous serons toujours sur la branche sur laquelle nous avons éxécuté la commande.</p>
+                </div>
+                <div class="command-box" id="change-branch">
+                    <h3>Changer de branche</h3>
+                    <p>Une fois notre nouvelle branche créée ou la branche sur laquelle nous voulons travailler identifiée, la commande suivante permet de se rendre dessus :</p>
+                    <div class="code">
+                        <p>git checkout [maBranche]</p>
+                    </div>
+                    <p>Astuce : Il est possible de créer une branche et de se rendre directement dessus. Pour cela, nous disposons de la commande suivante :</p>
+                    <div class="code">
+                        <p>git switch [maBranche]</p>
+                    </div>
+                </div>
+                <div class="command-box" id="rename-branch">
+                    <h3>Renommer une branche</h3>
+                    <p>Pour renommer une branche, on utiliser la commande suivante :</p>
+                    <div class="code">
+                        <p>git branch -m [ancienNom] [nouveauNom]</p>
+                    </div>
+                    <p>Dans ce cas, <span>-m</span> est le diminutif pour <span>--move</span></p>
+                </div>
+                <div class="command-box" id="delete-branch">
+                    <h3>Supprimer une branche</h3>
+                    <p>Pour supprimer une branche, on utiliser la commande suivante :</p>
+                    <div class="code">
+                        <p>git branch -d [maBranche]</p>
+                    </div>
+                    <p>Dans ce cas, <span>-d</span> est le diminutif pour <span>--delete</span></p>
+                </div>
+                <div class="command-box" id="merge-branch">
+                    <h3>Joindre notre branche à une autre</h3>
+                    <p>Une fois notre travail terminé et verifié sur notre branche, nous pouvons joindre notre version du code - sur notre branche - à la version sur la branche principale afin de la mettre à jour pour tous. Pour se faire, nous devons d'abord nous rendre sur la branche de destination avant de <span>merge</span></p>
+                    <div class="code">
+                        <p>git checkout main</p>
+                        <p>git merge [maBranche]</p>
+                    </div>
+                    <p>Parfois, il faudra résoudre certains conflits, appellés <span>merge conflicts</span>. Cela arrive lorsque le serveur ne parvient pas à déterminer quelles lignes de codes sont à remplacer ou garder.</p>
                 </div>
             </article>
         </section>

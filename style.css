@@ -13,7 +13,6 @@ body {
     background: var(--white);
     color: var(--black);
     height:100vh;
-    overflow-y: scroll;
 }
 
 header {
@@ -22,12 +21,12 @@ header {
     padding: 0 20px;
     box-sizing: border-box;
     border-bottom: solid 1px #121212;
-    z-index:1;
+    z-index:10;
     background: var(--white);
     display:flex;
     align-items:center;
     justify-content:center;
-    position:sticky;
+    position:fixed;
     top:0;
     left:0;
 
@@ -47,10 +46,11 @@ main {
     border-bottom: solid 1px var(--black);
     padding: 14px 20px;
     box-sizing: border-box;
-    position:sticky;
+    position:fixed;
     top:60px;
     left:0;
     background:var(--white);
+    z-index:5;
 
     .burger {
         width:100%;
@@ -109,13 +109,29 @@ main {
     padding:14px 20px;
     box-sizing: border-box;
     overflow-y:scroll;
+    margin-top: 108px;
 
     hr{
-        margin:10px 0 30px 0;
+        margin:10px 0 20px 0;
     }
 
     article {
-        margin-bottom: 40px;
+        margin-bottom: 50px;
+
+        .description {
+            font-style:italic;
+            margin:10px 0 20px;
+        }
+
+        span {
+            background: var(--grey);
+            font-weight:bold;
+            border-radius:3px;
+            padding: 2px 4px;
+            box-sizing: border-box;
+            font-family:'Courier New', Courier, monospace;
+            font-size:0.85em;
+        }
 
         .command-box {
             margin-bottom: 30px;
@@ -126,15 +142,6 @@ main {
                 padding: 5px 0 5px 10px;
                 box-sizing: border-box;
                 margin-bottom: 10px;
-            }
-
-            span {
-                background: var(--grey);
-                font-weight:bold;
-                border-radius:3px;
-                padding: 2px 4px;
-                box-sizing: border-box;
-                font-family:'Courier New', Courier, monospace;
             }
 
             .code {
@@ -158,9 +165,6 @@ main {
 @media screen and (min-width: 700px) {
     .side-menu {
         width: 150px;
-        position:sticky;
-        top:0;
-        left:0;
         height: calc(100vh - 60px);
         border-bottom:none;
         border-right: solid 1px var(--black);
@@ -180,6 +184,6 @@ main {
         left: 150px;
         width: calc(100% - 150px);
         height: calc(100vh - 60px);
-        padding-top: 50px;
+        margin-top: 60px;
     }
 }
